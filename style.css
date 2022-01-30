@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+.back{
+    background: linear-gradient(-120deg , rgb(250, 255, 193), rgb(0, 193, 254));
+    height: 100vh;
+}
+.bg-sidebar{
+  background: #FAFFC1;
+}
+li a:hover{
+    background-color: rgb(0, 166, 255);
+    border-radius: 5px;
+    padding: 10px 0;
+}
+::-webkit-scrollbar{
+    width: 0!important;
+}
+/* table */
+.table-responsive.height {
+    height:88vh;
+}
+
+@media (max-width:690px) {
+    .ecls{
+        transform: rotate(90deg);
+    }
+}

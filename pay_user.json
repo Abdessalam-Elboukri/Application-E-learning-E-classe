@@ -1,0 +1,38 @@
+[
+    {
+        "Nom" :"abdessalam",
+        "Pay_shed" :"first",
+        "BillNum" : "0423456777",
+        "Amount_P" :"DHS 1000,00",
+        "Balance_A" :"DHS 5000,00",
+        "Date" :"12,jan,2022"
+    },
+
+    {
+        "Nom" :"tayeb",
+        "Pay_shed" :"first",
+        "BillNum" : "0643456532",
+        "Amount_P" :"DHS 1400,00",
+        "Balance_A" :"DHS 6000,00",
+        "Date" :"13,jan,2022"
+    },
+
+    {
+        "Nom" :"lghabar",
+        "Pay_shed" :"first",
+        "BillNum" : "0673456532",
+        "Amount_P" :"DHS 1250,00",
+        "Balance_A" :"DHS 6500,00",
+        "Date" :"12,feb,2022"
+    },
+
+    {
+        "Nom" :"abdessamad",
+        "Pay_shed" :"first",
+        "BillNum" : "242557485",
+        "Amount_P" :"DHS 3000,00",
+        "Balance_A" :"DHS 7000,00",
+        "Date" :"12,mar,2022"
+    }
+
+]
