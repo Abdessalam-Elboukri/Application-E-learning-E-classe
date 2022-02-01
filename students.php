@@ -36,7 +36,7 @@
                     </div>
                     <hr class="m-auto" style="width: 100%;">
                 </div>
-                <div class="row mt-2 px-2 table-responsive">
+                <div class="row mt-2 px-2 table-responsive" style="height: 72vh;">
                     <table class="table">
                         <thead>
                             <tr class=" text-muted">
@@ -73,7 +73,7 @@
                                             <i class=\"fa fa-trash-o ms-2 d-inline\" aria-hidden=\"true\"></i>
                                         </div>
                                         </td>
-                                       </tr class=\"mt-1\">";
+                                       </tr>";
                                 }
                             
                             ?>
