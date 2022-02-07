@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,9 +12,16 @@
     <script src="bootstrap5/js/bootstrap.bundle.js"></script>
     <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="style.css">
+    <!-- <script>
+        function submit()
+        {
+            document.getElementById("val_form").click(); // Simulates button click
+            document.val_form.submit(); // Submits the form without the button
+        }
+    </script> -->
 </head>
 
-<body>
+<body >
     <section class="container-fluid">
         <div class="row flex-nowrap">
 
@@ -53,7 +61,7 @@
                          <!-- ---------------------------- -->
                         <?php
                             include_once 'db.php';
-                            $query = "SELECT * FROM  eclass " ;
+                            $query = "SELECT * FROM  student " ;
                             $result = mysqli_query($conn, $query);
                         
                             if (mysqli_num_rows($result) > 0) {
@@ -80,12 +88,17 @@
                         <?php
                             $i++;
                             }
-                        }
-                        else{
+                        }else{
                             echo "No result found" ;
                         }
                         ?>
-                        </tbody>
+
+                            <form method="post" action="students.php" name="val_form" id="val_form" >
+                                <input type="text" name="ii" class="d-none" id="ii" value="<?php echo $i ?>">
+                                <input type="submit" class="d-none">
+                            </form>
+
+                    </tbody>
                     </table>
                     </table>
                 </div>

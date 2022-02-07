@@ -50,26 +50,39 @@
                         </thead>
                         <tbody class="flex-column">
 
+        
                     <?php
-                        $Payment = 'pay_user.json' ;
-                        $Pay_data = file_get_contents($Payment) ;
-                        $Stud_data = json_decode($Pay_data , true) ;
+                        include_once 'db.php';
+                        $query = "SELECT * FROM  payment " ;
+                        $result = mysqli_query($conn, $query);
+                    
+                        if (mysqli_num_rows($result) > 0) {
+                    
+                        $i=0;
+                        while($row = mysqli_fetch_assoc($result)) {                                                   
+                    ?> 
 
-                        
-                        foreach ($Stud_data as  $val) {
-                                echo "<tr class=\"mt-1\">
-                                        <td class=\"align-middle \">{$val['Nom']}</td>
-                                        <td class=\"align-middle\">{$val['Pay_shed']}</td>
-                                        <td class=\"align-middle\">{$val['BillNum']}</td>
-                                        <td class=\"align-middle\">{$val['Amount_P']}</td>
-                                        <td class=\"align-middle\">{$val['Balance_A']}</td>
-                                        <td class=\"align-middle\">{$val['Date']}</td>
-                                        <td class=\"text-primary align-middle\">
-                                            <i class=\"fa fa-eye\" aria-hidden=\"true\"></i>
+                                <tr class="mt-1">
+                                        <td class="align-middle "><?php echo  $row['name'] ?></td>
+                                        <td class="align-middle"><?php echo $row['payment_shedule'] ?></td>
+                                        <td class="align-middle"><?php echo $row['bill_a'] ?></td>
+                                        <td class="align-middle"><?php echo 'DHS ' . $row['amount_p']  ?></td>
+                                        <td class="align-middle"><?php echo 'DHS ' . $row['balace_a'] ?></td>
+                                        <td class="align-middle"><?php echo $row['date'] ?></td>
+                                        <td class="text-primary align-middle">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
                                         </td>
-                                       </tr> ";
-                                }                      
+                                       </tr> 
+                                       
+                            <?php
+                                $i++ ;
+                                }
+                            }                                   
+                                else{
+                                        echo 'no result found';
+                                    }
                             ?>
+                            
                         </tbody>
                     </table>
                 </div>

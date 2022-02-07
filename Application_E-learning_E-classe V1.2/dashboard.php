@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,8 +34,11 @@
                             <div class="card-body">
                                 <i class="fa fa-graduation-cap fa-lg"></i>
                                 <p class="text-muted ">Students</p>
-                                <p class="fa-xs d-flex justify-content-end text-dark fw-bold fs-5">
-                                    243
+                                <p class="fa-xs d-flex justify-content-end text-dark fw-bold fs-5">                                  
+                                <?php
+                                $ii = "" ;
+                                       echo $_GET['ii'] ;
+                                    ?>
                                 </p>
                             </div>
                         </div>

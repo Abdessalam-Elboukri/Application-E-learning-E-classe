@@ -10,7 +10,7 @@
         $enroll_n = $_POST['Enroll'];
         $date_a = $_POST['Date_A'];
     
-        $sql = " INSERT INTO eclass (`name`, `email`, `phone`, `enroll_n`, `date_a`) VALUES ('$name', '$email', '$phone', '$enroll_n', '$date_a')"; 
+        $sql = " INSERT INTO student (`name`, `email`, `phone`, `enroll_n`, `date_a`) VALUES ('$name', '$email', '$phone', '$enroll_n', '$date_a')"; 
         mysqli_query($conn,$sql);
 		header('location: students.php'); 
     }
@@ -37,7 +37,7 @@
             border-bottom: 1px solid gray;
             transition: all 0.4s ease-in-out;
         }
-        input:focus label{
+        input:focus {
             transform: translateY(4px);
             border-color: orange;
         }
