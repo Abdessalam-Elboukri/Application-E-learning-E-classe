@@ -1,30 +1,42 @@
 <?php
 // including the database connection file
 include_once("db.php");
+
+$msg ="";
  
 if(isset($_POST['Update']))
-{    
+{       $id = $_POST['id'];
+        // $image = $_FILES['image']['name'];
         $name = $_POST['Nom'];
         $email = $_POST['Email'];
         $phone = $_POST['Phone'];
         $enroll_n = $_POST['Enroll'];
         $date_a = $_POST['Date_A'];    
+        
+        // $target = "images/".basename($image);
+        
     
-        $result = mysqli_query($conn, "UPDATE student SET name='$name',email='$email',phone='$phone' , enroll_n='$enroll_n' , date_a='$date_a'  WHERE enroll_n=$enroll_n");
+        $result = mysqli_query($conn, "UPDATE students SET  name='$name', email='$email', phone='$phone' , enroll_n='$enroll_n' , date_a='$date_a'  WHERE id=$id ");
 
         header("Location: students.php");
+
+        // if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+        //     $msg = "Image uploaded successfully";
+        // }else{
+        //     $msg = "Failed to upload image";
+        // }
 }
 ?>
 <?php
-//error_reporting(0);
 //getting id from url
-$enroll_n = $_GET['enroll_n'];
- 
+$id = $_GET['id'];
+
 //selecting data associated with this particular id
-$result = mysqli_query($conn, "SELECT * FROM student WHERE enroll_n=$enroll_n");
+$result = mysqli_query($conn, "SELECT * FROM students WHERE id=$id ");
  
 while($row = mysqli_fetch_array($result))
 {
+    // $image = $row['image'];
     $name = $row['name'];
     $email = $row['email'];
     $phone = $row['phone'];
@@ -69,29 +81,35 @@ while($row = mysqli_fetch_array($result))
                 <div class="d-flex flex-column ">
                     <div class="text-center position-relative bg-primary p-2 text-white ">
                         <h3> changement des infos de : <?php echo $name ?> </h3>
-                        <a href="students.php" class="position-absolute fs-5 fw-500 text-decoration-none tetx-dark" style="left:10px; top:-5px">x</a>
+                        <a href="students.php" class="position-absolute fs-5 fw-500 text-decoration-none text-white" style="left:10px; top:-5px">x</a>
                     </div>
-                    <form method="POST" action="edit.php"  class="d-flex flex-column gap-3 mt-3">
+                    <form method="POST" action="edit.php" enctype="multipart/form-data" class="d-flex flex-column gap-3 mt-3">
+                        
+                        <input type="hidden" name="image" id="image" value="">
+
                         <div class="d-flex flex-column">
-                            <label for="" class="fs-6 text-muted">Name</label>
+                            <label for="nom" class="fs-6 text-muted">Name</label>
                             <input type="text" name="Nom" id="nom"  value="<?php echo $name ?>">
                         </div>
                         <div class="d-flex flex-column">
-                            <label for="" class="fs-6 text-muted">E-mail</label>
-                            <input type="email" name="Email" id="email" value="<?php echo $email ?>" >
+                            <label for="email" class="fs-6 text-muted">E-mail</label>
+                            <input type="email" name="Email" id="email" value="<?php echo $email  ?>" >
                         </div>
                         <div class="d-flex flex-column">
-                            <label for="" class="fs-6 text-muted">Phone Number</label>
+                            <label for="phone" class="fs-6 text-muted">Phone Number</label>
                             <input type="number" name="Phone" id="phone" value="<?php echo $phone ?>">
                         </div>
                         <div class="d-flex flex-column">
-                            <label for="" class="fs-6 text-muted">Enroll Number</label>
+                            <label for="enroll_n" class="fs-6 text-muted">Enroll Number</label>
                             <input type="number" name="Enroll" id="enroll_n" value="<?php echo $enroll_n ?>">
                         </div>
                         <div class="d-flex flex-column">
                             <label for="" class="fs-6 text-muted">Date of admission</label>
                             <input type="date" name="Date_A" id="Date_A" value="<?php echo $date_a ?>">
                         </div>
+
+                        <input type="hidden" name="id" value=<?php echo $_GET['id'];?>>
+                        
                         <div class="mt-2"> 
                             <input id="submit" type="submit" name="Update" value="Update" class="px-4 pt-2 pb-2 bg-primary border-0 text-white rounded-2"   > 
                         </div>
@@ -102,4 +120,3 @@ while($row = mysqli_fetch_array($result))
     </main>
 </body>
 </html>
-

@@ -1,3 +1,25 @@
+<?php include 'db.php';
+
+$students_sql = "SELECT COUNT(id) FROM students";
+$payments_sql = "SELECT SUM(amount_p) as total
+                FROM payments ";
+$course_sql = "SELECT COUNT(id) FROM courses";
+
+// students 
+$students = mysqli_query($conn, $students_sql);
+$std_num = mysqli_fetch_array($students);
+
+// payments
+$res = mysqli_query($conn, $payments_sql);
+$pay = mysqli_fetch_array($res);
+$pay_total = $pay['total'] ;
+
+
+// courses
+$courses = mysqli_query($conn, $course_sql);
+$courses_num = mysqli_fetch_array($courses);
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,8 +58,7 @@
                                 <p class="text-muted ">Students</p>
                                 <p class="fa-xs d-flex justify-content-end text-dark fw-bold fs-5">                                  
                                 <?php
-                                $ii = "" ;
-                                       echo $_GET['ii'] ;
+                                       echo $std_num[0];
                                     ?>
                                 </p>
                             </div>
@@ -50,7 +71,9 @@
                                 <i class="fa fa-bookmark fa-lg"></i>
                                 <p class="text-muted">Course</p>
                                 <p class="d-flex justify-content-end text-dark fw-bold fs-5">
-                                    13
+                                    <?php
+                                        echo $courses_num[0] ;
+                                    ?>
                                 </p>
                             </div>
                         </div>
@@ -62,7 +85,9 @@
                                 <i class="fa fa-usd" aria-hidden="true"></i>
                                 <p class="text-muted">Payments</p>
                                 <p class="fa-xs d-flex justify-content-end text-dark fw-bold fs-5">
-                                    Dhs 556, 000
+                                <?php
+                                       echo 'DHS ' .$pay_total;
+                                    ?>
                                 </p>
                             </div>
                         </div>

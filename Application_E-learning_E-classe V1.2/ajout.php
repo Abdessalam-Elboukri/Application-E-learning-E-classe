@@ -4,16 +4,31 @@
     
     
     if( isset($_POST['submit'])) {
+        // Get image name
+        $image = $_FILES['image']['name'];
+        // --------------
         $name = $_POST['Nom'];
         $email = $_POST['Email'];
         $phone = $_POST['Phone'];
         $enroll_n = $_POST['Enroll'];
         $date_a = $_POST['Date_A'];
+
+        // image file directory
+  	    $target = "images/profiles/".basename($image);
+
+        // if( $name && $email && $phone && $enroll_n && $date_a){
     
-        $sql = " INSERT INTO student (`name`, `email`, `phone`, `enroll_n`, `date_a`) VALUES ('$name', '$email', '$phone', '$enroll_n', '$date_a')"; 
+        $sql = " INSERT INTO students (`image`, `name`, `email`, `phone`, `enroll_n`, `date_a`) VALUES ('$image', '$name', '$email', '$phone', '$enroll_n', '$date_a')"; 
         mysqli_query($conn,$sql);
 		header('location: students.php'); 
-    }
+
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+            $msg = "Image uploaded successfully";
+        }else{
+            $msg = "Failed to upload image";
+        }
+    }  
+
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +49,7 @@
             border: gray 1px solid;
             outline: none;
             border: none;
-            border-bottom: 1px solid gray;
+            border-bottom: 1.3px solid gray;
             transition: all 0.4s ease-in-out;
         }
         input:focus {
@@ -50,12 +65,15 @@
                 <div class="d-flex flex-column ">
                     <div class="text-center position-relative bg-warning p-2 text-white ">
                         <h3 >Ajouter un utilisateur</h3>
-                        <a href="students.php" class="position-absolute fs-5 fw-500 text-decoration-none tetx-dark" style="left:10px; top:-5px">x</a>
+                        <a href="students.php" class="position-absolute fs-5 fw-500 text-decoration-none text-white" style="left:10px; top:-5px">x</a>
                     </div>
-                    <form method="POST" action="ajout.php"  class="d-flex flex-column gap-2 mt-3">
+                    <form method="POST" action="ajout.php" enctype="multipart/form-data"  class="d-flex flex-column gap-2 mt-3">
+                        <div class="d-flex flex-column">
+                            <input type="file" name="image" id="image" class="input-form" >
+                        </div>
                         <div class="d-flex flex-column">
                             <label for="" class="fs-6">Name</label>
-                            <input type="text" name="Nom" id="nom" class="inpu-form" >
+                            <input type="text" name="Nom" id="nom" class="input -form" >
                         </div>
                         <div class="d-flex flex-column">
                             <label for="" class="fs-6">E-mail</label>
@@ -63,7 +81,7 @@
                         </div>
                         <div class="d-flex flex-column">
                             <label for="" class="fs-6">Phone Number</label>
-                            <input type="number" name="Phone" id="phone">
+                            <input type="tel" name="Phone" id="phone">
                         </div>
                         <div class="d-flex flex-column">
                             <label for="" class="fs-6">Enroll Number</label>

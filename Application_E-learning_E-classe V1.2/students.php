@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +11,7 @@
     <script src="bootstrap5/js/bootstrap.bundle.js"></script>
     <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="style.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- <script>
         function submit()
         {
@@ -21,7 +21,7 @@
     </script> -->
 </head>
 
-<body >
+<body>
     <section class="container-fluid">
         <div class="row flex-nowrap">
 
@@ -44,67 +44,60 @@
                     </div>
                     <hr class="m-auto" style="width: 100%;">
                 </div>
-                <div class="row mt-2 px-2 table-responsive" style="height: 75vh;">
+                <div class="row mt-2 px-2 table-responsive" style="height: 72vh;">
                     <table class="table">
-                        <thead >
+                        <thead>
                             <tr class=" text-muted">
                                 <th scope="col"></th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Phone</th>
-                                <th scope="col">Enroll number</th>
+                                <th scope="col">Enroll number</th>          
                                 <th scope="col">Date of admission</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
-                        <tbody class="flex-column">
-                         <!-- ---------------------------- -->
-                        <?php
+                        <tbody>
+                            <!-- ---------------------------- -->
+                            <?php
                             include_once 'db.php';
-                            $query = "SELECT * FROM  student " ;
+                            $query = "SELECT * FROM  students ";
                             $result = mysqli_query($conn, $query);
-                        
+
                             if (mysqli_num_rows($result) > 0) {
-                        
-                            $i=0;
-                            while($row = mysqli_fetch_assoc($result)) {                                                   
-                        ?>    
-                        <tr class="" >
-                                <td class="align-middle">
-                                    <img src="./images/students.jpg"  width="50" height="50">
-                                </td>
-                                <td class="align-middle "><?php echo  $row['name']; ?></td>
-                                <td class="align-middle"><?php echo $row['email']; ?></td>
-                                <td class="align-middle"><?php echo $row['phone']; ?></td>
-                                <td class="align-middle"><?php echo $row['enroll_n']; ?></td>
-                                <td class="align-middle"><?php echo $row['date_a']; ?></td>
-                                <td class="text-primary align-middle \">
-                                <div class="d-flex flex-nowrap gap-3\">
-                                <a href="edit.php?enroll_n=<?php echo $row['enroll_n']; ?>"><i class="fa fa-pencil"></i></a>
-                                <a href="delete.php?enroll_n=<?php echo $row['enroll_n']; ?>"><i class="fa fa-trash-o ms-3"></i></a>
-                                </div>
-                                </td>
-                                </tr>
-                        <?php
-                            $i++;
+
+                                $i = 0;
+                                while ($row = mysqli_fetch_assoc($result)) {
+                            ?>
+                                    <tr class="">
+                                        <td class="align-middle">
+                                            <?php
+                                            echo "<img src='images/profiles/".$row['image']."' width=\"60\" height=\"50\" class=\"rounded\">";
+                                            ?>
+                                        </td>
+                                        <td class="align-middle "><?php echo  $row['name']; ?></td>
+                                        <td class="align-middle"><?php echo $row['email']; ?></td>
+                                        <td class="align-middle"><?php echo $row['phone']; ?></td>
+                                        <td class="align-middle"><?php echo $row['enroll_n']; ?></td>
+                                        <td class="align-middle"><?php echo $row['date_a']; ?></td>
+                                        <td class="text-primary align-middle \">
+                                            <div class="d-flex flex-nowrap gap-3\">
+                                                <a href="edit.php?id=<?php echo $row['id']; ?>"><i class="fa fa-pencil"></i></a>
+                                                <a href="delete.php?id=<?php echo $row['id']; ?>"><i class="fa fa-trash-o ms-3"></i></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                            <?php
+                                    $i++;
+                                }
+                            } else {
+                                echo "No result found";
                             }
-                        }else{
-                            echo "No result found" ;
-                        }
-                        ?>
-
-                            <form method="post" action="students.php" name="val_form" id="val_form" >
-                                <input type="text" name="ii" class="d-none" id="ii" value="<?php echo $i ?>">
-                                <input type="submit" class="d-none">
-                            </form>
-
-                    </tbody>
-                    </table>
+                            ?>
+                        </tbody>
                     </table>
                 </div>
             </div>
-        </div>
-        </div>
         </div>
     </section>
 </body>

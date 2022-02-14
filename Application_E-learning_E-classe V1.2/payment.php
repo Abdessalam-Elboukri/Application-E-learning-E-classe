@@ -36,7 +36,7 @@
                     <hr class="m-auto" style="width: 97%;">
                 </div>
                 <div class="row mt-2 px-5 table-responsive">
-                    <table class="table">
+                    <table class="table" >
                         <thead>
                             <tr class=" text-muted">
                                 <th scope="col">Name</th>
@@ -53,7 +53,7 @@
         
                     <?php
                         include_once 'db.php';
-                        $query = "SELECT * FROM  payment " ;
+                        $query = "SELECT * FROM  payments " ;
                         $result = mysqli_query($conn, $query);
                     
                         if (mysqli_num_rows($result) > 0) {
@@ -72,7 +72,7 @@
                                         <td class="text-primary align-middle">
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                         </td>
-                                       </tr> 
+                                </tr> 
                                        
                             <?php
                                 $i++ ;
