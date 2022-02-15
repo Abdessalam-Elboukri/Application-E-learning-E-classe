@@ -21,10 +21,6 @@ li a:hover{
 ::-webkit-scrollbar{
     width: 0!important;
 }
-/* table */
-.table-responsive.height {
-    height:88vh;
-}
 
 @media (max-width:690px) {
     .ecls{

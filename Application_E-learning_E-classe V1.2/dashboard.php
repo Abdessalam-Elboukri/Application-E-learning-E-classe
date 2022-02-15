@@ -32,7 +32,7 @@ $courses_num = mysqli_fetch_array($courses);
     <link rel="stylesheet" href="bootstrap5/css/bootstrap.css">
     <script src="bootstrap5/js/bootstrap.min.js"></script>
     <script src="bootstrap5/js/bootstrap.bundle.js"></script>
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -54,7 +54,7 @@ $courses_num = mysqli_fetch_array($courses);
                         <div class="card" style="font-size: 1.5rem; background-color: #F0F9FF
                         ; color: #74C1ED;">
                             <div class="card-body">
-                                <i class="fa fa-graduation-cap fa-lg"></i>
+                            <i class="bi bi-mortarboard-fill"></i>
                                 <p class="text-muted ">Students</p>
                                 <p class="fa-xs d-flex justify-content-end text-dark fw-bold fs-5">                                  
                                 <?php
@@ -68,7 +68,7 @@ $courses_num = mysqli_fetch_array($courses);
                         <div class="card" style="font-size: 1.5rem; background-color: #FEF6FB
                         ; color: #EE95C5;">
                             <div class="card-body">
-                                <i class="fa fa-bookmark fa-lg"></i>
+                            <i class="bi bi-bookmark-check-fill "></i>
                                 <p class="text-muted">Course</p>
                                 <p class="d-flex justify-content-end text-dark fw-bold fs-5">
                                     <?php
@@ -82,7 +82,7 @@ $courses_num = mysqli_fetch_array($courses);
                         <div class="card" style="font-size: 1.5rem; background-color: #FEFBEC
                         ; color: #00C1FE;">
                             <div class="card-body">
-                                <i class="fa fa-usd" aria-hidden="true"></i>
+                            <i class="bi bi-currency-dollar "></i>
                                 <p class="text-muted">Payments</p>
                                 <p class="fa-xs d-flex justify-content-end text-dark fw-bold fs-5">
                                 <?php
@@ -96,7 +96,7 @@ $courses_num = mysqli_fetch_array($courses);
                         <div class="card bg-primary" style="font-size: 1.5rem;
                         ; color: #fff; background: linear-gradient(-120deg , rgb(250, 255, 193), rgb(0, 193, 254));;">
                             <div class="card-body">
-                                <i class="fa fa-user" aria-hidden="true"></i>
+                            <i class="bi bi-people-fill"></i>
                                 <p class="text-muted">Users</p>
                                 <p class="fa-xs d-flex justify-content-end text-dark fw-bold fs-5">
                                     3

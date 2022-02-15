@@ -5,53 +5,54 @@
         </div>
         <div class="text-center d-none d-lg-inline-block ">
             <img src="./images/pexels-photo-2379004 1.png" class="rounded-circle" style="max-width: 100px;">
-            <h5 class="mt-2">Abdo</h5>
+            <h5 class="mt-2">Abdessalam</h5>
             <p>Admin</p>
         </div>
         <nav class="mt-2 ">
-            <ul class="nav d-flex flex-column gap-3  align-items-center">
+            <ul class="nav d-flex flex-column gap-3 text-start align-items-center">
                 <li>
-                    <a href="dashboard.php" class="nav-link col-9 text-dark p-2 d-none d-sm-inline">
-                        <i class="fa fa-home" aria-hidden="true" ></i>
+                    <a href="dashboard.php" class="btn nav-link text-dark p-2 d-none d-sm-inline">
+                    <i class="bi bi-house-door-fill"></i>
                         Home</a>
-                    <a href="dashboard.php" class="d-sm-none fs-3 p-2 text-dark"><i class="fa fa-home "></i></a>
+                    <a href="dashboard.php" class="d-sm-none fs-3 p-2 text-dark"><i class="bi bi-house-door-fill"></i></a>
                 </li>
                 <li>
                     <a href="courses.php" class="btn text-start nav-link p-2 text-dark d-none d-sm-inline">
-                        <i class="fa fa-bookmark" aria-hidden="true"></i>
+                    <i class="bi bi-bookmark-fill"></i>
                         Courses</a>
-                    <a href="courses.php" class="d-sm-none fs-3 p-2 text-dark"><i class="fa fa-bookmark " aria-hidden="true"></i></a>
+                    <a href="courses.php" class="d-sm-none fs-3 p-2 text-dark"><i class="bi bi-bookmark-fill"></i></a>
                 </li>
                 <li>
                     <a href="students.php" class="btn text-start p-2 nav-link  text-dark d-none d-sm-inline">
-                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                    <i class="bi bi-mortarboard-fill"></i>
                         Students</a>
-                    <a href="students.php" class="d-sm-none fs-3 p-2 text-dark"><i class="fa fa-graduation-cap " aria-hidden="true"></i></a>
+                    <a href="students.php" class="d-sm-none fs-3 p-2 text-dark"><i class="bi bi-mortarboard-fill"></i></i></a>
                 </li>
                 <li>
                     <a href="payment.php" class="btn text-start nav-link p-2 text-dark d-none d-sm-inline">
-                        <i class="fa fa-usd" aria-hidden="true"></i>
+                    <i class="bi bi-currency-dollar"></i>
                         Payment</a>
-                    <a href="payment.php" class="d-sm-none fs-3 p-2 text-dark"><i class="fa fa-usd " aria-hidden="true"></i></a>
+                    <a href="payment.php" class="d-sm-none fs-3 p-2 text-dark"><i class="bi bi-currency-dollar"></i></a>
                 </li>
                 <li>
                     <a href="#" class="btn text-start nav-link text-dark d-none p-2 d-sm-inline">
-                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                    <i class="bi bi-file-earmark-person-fill"></i>
                         Report</a>
-                    <a href="index.php" class="d-sm-none fs-3 p-2 text-dark"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
+                    <a href="#" class="d-sm-none fs-3 p-2 text-dark"><i class="bi bi-file-earmark-person-fill"></i></a>
                 </li>
                 <li>
-                    <a href="#" class="btn text-start nav-link text-dark d-none p-2 d-sm-inline">
-                        <i class="fa fa-sliders" aria-hidden="true"></i>
+                    <a href="#" class="btn nav-link text-dark d-none p-2 d-sm-inline">
+                    
+                    <i class="bi bi-sliders"></i>
                         Setting</a>
-                    <a href="index.php" class="d-sm-none fs-3 p-2 text-dark"><i class="fa fa-sliders" aria-hidden="true"></i></a></a>
+                    <a href="#" class="d-sm-none fs-3 p-2 text-dark"><i class="bi bi-sliders"></i></a></a>
                 </li>
             </ul>
         </nav>
         <div class="mt-3  justify-content-center  d-flex">
-            <a href="index.php" class="btn text-start nav-link text-dark p-2 d-none d-sm-inline">Logout
-                <i class="fa fa-sign-out " aria-hidden="true"></i>
+            <a href="index.php" class="text-start nav-link text-dark p-2 d-none d-sm-inline">Logout
+            <i class="bi bi-box-arrow-right"></i>
             </a>
-            <a href="index.php" class="d-sm-none fs-3 p-2 text-dark"><i class="fa fa-sign-out " aria-hidden="true"></i></a>
+            <a href="index.php" class="d-sm-none fs-3 p-2 text-dark"><i class="bi bi-box-arrow-right"></i></a>
         </div>
     </aside>

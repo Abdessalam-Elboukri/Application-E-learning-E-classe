@@ -42,21 +42,21 @@
     <link rel="stylesheet" href="bootstrap5/css/bootstrap.css">
     <script src="bootstrap5/js/bootstrap.min.js"></script>
     <script src="bootstrap5/js/bootstrap.bundle.js"></script>
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
     <style>
         input{
             height: 35px;
-            border: gray 1px solid;
             outline: none;
             border: none;
-            border-bottom: 1.3px solid gray;
+            border-bottom: 1.8px solid gray;
             transition: all 0.4s ease-in-out;
         }
         input:focus {
             transform: translateY(-4px);
-            border-color: orange;
+            border-color: #79B4B7;
         }
+
     </style>
 </head>
 <body>
@@ -64,11 +64,24 @@
         <div class="col-lg-6 col-sm-8 col-md-7 ">
             <div class=" shadow bg-white p-3 " style="border-radius:17px">
                 <div class="d-flex flex-column ">
-                    <div class="text-center position-relative bg-warning p-2 text-white ">
-                        <h3 >Ajouter un utilisateur</h3>
-                        <a href="students.php" class="position-absolute fs-5 fw-500 text-decoration-none text-white" style="left:10px; top:-5px">x</a>
+                    <div class="text-center position-relative p-2 text-white" style="background:#79B4B7;">
+                        <h3 >Ajouter un Course</h3>
+                        <a href="courses.php" class="position-absolute fs-5 text-decoration-none text-white" style="right:10px; top:0px"><i class="bi bi-x-square-fill"></i></a>
                     </div>
                     <form method="POST" action="add_course.php" enctype="multipart/form-data"  class="d-flex flex-column gap-2 mt-3">
+                       
+                    <?php 
+                        if(isset($_SESSION["errorMessage"])) {
+                        ?>
+                        <div class="error-message"><?php  echo $_SESSION["errorMessage"]; ?></div>
+                        <?php 
+                        unset($_SESSION["errorMessage"]);
+                        } 
+
+
+                    ?>
+                    
+                    
                         <div class="d-flex flex-column">
                             <input type="file" name="image" id="image" class="input-form" >
                         </div>
@@ -93,7 +106,7 @@
                             <input type="text" name="c_time" id="c_time">
                         </div>
                         <div class="mt-2"> 
-                            <input id="submit" type="submit" name="submit" value="Ajoute" class="px-4 pt-2 pb-2 bg-primary border-0 text-white rounded-2"   > 
+                            <input id="submit" type="submit" name="submit" value="Ajoute" class="px-4 pt-2 pb-2 border-0 text-white rounded-2"   > 
                         </div>
                     </form>
                 </div>

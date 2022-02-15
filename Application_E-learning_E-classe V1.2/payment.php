@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="bootstrap5/css/bootstrap.css">
     <script src="bootstrap5/js/bootstrap.min.js"></script>
     <script src="bootstrap5/js/bootstrap.bundle.js"></script>
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -35,22 +35,20 @@
                     </div>
                     <hr class="m-auto" style="width: 97%;">
                 </div>
-                <div class="row mt-2 px-5 table-responsive">
-                    <table class="table" >
+                <div class="row mt-2 px-2 table-responsive" style="background:#EEF2FF">
+                    <table class="table" style="border-collapse: separate; border-spacing: 0 10px;">
                         <thead>
                             <tr class=" text-muted">
-                                <th scope="col">Name</th>
-                                <th scope="col">Payment Shedule</th>
-                                <th scope="col">Bill Number</th>
-                                <th scope="col">Amounts Paid</th>
-                                <th scope="col">Balance Amount</th>
-                                <th scope="col">Date</th>
+                                <th scope="col" style="font-size:14px;">Name</th>
+                                <th scope="col" style="font-size:14px;">Payment Shedule</th>
+                                <th scope="col" style="font-size:14px;">Bill Number</th>
+                                <th scope="col" style="font-size:14px;">Amounts Paid</th>
+                                <th scope="col" style="font-size:14px;">Balance Amount</th>
+                                <th scope="col" style="font-size:14px;">Date</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody class="flex-column">
-
-        
                     <?php
                         include_once 'db.php';
                         $query = "SELECT * FROM  payments " ;
@@ -62,7 +60,7 @@
                         while($row = mysqli_fetch_assoc($result)) {                                                   
                     ?> 
 
-                                <tr class="mt-1">
+                                <tr class="bg-white shadow rounded">
                                         <td class="align-middle "><?php echo  $row['name'] ?></td>
                                         <td class="align-middle"><?php echo $row['payment_shedule'] ?></td>
                                         <td class="align-middle"><?php echo $row['bill_a'] ?></td>
@@ -70,7 +68,7 @@
                                         <td class="align-middle"><?php echo 'DHS ' . $row['balace_a'] ?></td>
                                         <td class="align-middle"><?php echo $row['date'] ?></td>
                                         <td class="text-primary align-middle">
-                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                            <i class="bi bi-eye-fill"></i>
                                         </td>
                                 </tr> 
                                        
