@@ -1,22 +1,22 @@
 
 <?php
 
-use LDAP\Result;
+    session_start();
 
         include("db.php");
-        session_start();
 
         // initializing variables ; define variables and set to empty values
                             
-        $email    = "";
-        $password = "";
+        $email    ="";
+        $password ="";
         $errors = array();
-
         // LOGIN USER
         if (isset($_POST['login_user'])) {
         $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $password = mysqli_real_escape_string($conn, $_POST['password']);
-    
+        $password = ($_POST['password']);
+// -------------
+        
+// -------------  
         if (empty($email)) {
             array_push($errors, "Email is required");
         }
@@ -26,37 +26,50 @@ use LDAP\Result;
     
         if (count($errors) == 0) {
             // $user_pass = md5($password);
-            $query = "SELECT * FROM accounts WHERE user_email='$email' AND user_pass='$password'";
+            $query = "SELECT * FROM accounts WHERE user_email='$email' AND user_pass='$password'  OR  name='$email' AND user_pass='$password' ";
             $results = mysqli_query($conn, $query);
             if (mysqli_num_rows($results) == 1) {
 
-                // $_SESSION['success'] = "You are now logged in";
-             header('location: dashboard.php');
+            $data_v=mysqli_fetch_array($results);
+            $_SESSION['name'] = $data_v['name'] ;
+            $_SESSION['email'] = $email ;
+            $_SESSION['password'] = $password;
+       
+      
+            if(isset($_POST['remeber_me'])){
+                setcookie('email', $email, time()+3600*24 , "/");
+                setcookie('pass', $password, time()+3600*24 , "/");
+            }
 
-             $data_v=mysqli_fetch_array($results);
-             $_SESSION['name'] = $data_v['name'] ;
+            header('location: dashboard.php');
 
             }else {
                 array_push($errors, "Wrong email/password combination");
         }
     }
-  }
+}
 ?>  
 <?php
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = test_input($_POST["email"]);
-    $password = test_input($_POST["password"]);
-    }
-
-    function test_input($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
+    function getcookie($val){
+        if(isset($_COOKIE["$val"])){
+            echo $_COOKIE["$val"];
+        }
     }
 ?>
 
+<?php
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $email = test_input($_POST["email"]);
+        $password = test_input($_POST["password"]);
+        }
+
+        function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+        }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -87,21 +100,21 @@ use LDAP\Result;
                     
                     <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="POST" id="login-form">
 
-                        <?php include 'error_login.php'; ?>
+                    <?php include 'error_login.php'; ?>
 
                         <div class=" d-flex flex-column text-muted ">
                             <label for="">E-mail</label>
-                            <input type="email" name="email" id="email-login" value="<?php echo $email ?>" placeholder="Enter your email"
+                            <input type="text" name="email" id="email-login" value="<?php getcookie('email') ; ?>" placeholder="Enter your email"
                                 class="w-100 rounded-3 border p-2 bg-transparent form-control">
                         </div>
                         <div class=" d-flex flex-column text-muted mt-3 text">
                             <label for="">Password</label>
-                            <input type="password" name="password" id="pass-login" value="<?php echo $password ?>" placeholder="Enter your password"
+                            <input type="password" name="password" id="pass-login" value="<?php getcookie('pass'); ?>" placeholder="Enter your password"
                                 class="w-100 rounded-3 border p-2 bg-transparent form-control">
                         </div>
                         <div class="d-flex align-items-center mt-3">
-                            <input type="checkbox">
-                            <label for="" class="ms-3" style="font-size:13px">Remember me</label>
+                            <input type="checkbox" name="remeber_me" id="check" class="form-check-input m-0 p-0 ">
+                            <label for="check" class="ms-3" style="font-size:13px">Remember me</label>
                         </div>
                         <div class="mt-3">
                             <input type="submit" value="Login" name="login_user" class="btn btn-info w-100 rounded-3 border-1 text-decoretion-none text-white text-uppercase" >

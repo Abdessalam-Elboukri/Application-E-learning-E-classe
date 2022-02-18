@@ -1,4 +1,7 @@
-<?php  session_start(); ?>
+<?php 
+include("check_destroy_session.php");
+    include_once 'db.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +55,7 @@
                         </thead>
                         <tbody class="flex-column">
                     <?php
-                        include_once 'db.php';
+                        
                         $query = "SELECT * FROM  payments " ;
                         $result = mysqli_query($conn, $query);
                     

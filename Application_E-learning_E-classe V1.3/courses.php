@@ -1,6 +1,7 @@
-<?php
+<?php 
+include("check_destroy_session.php");
+
     include "db.php";
-    session_start();
 ?>
 
 

@@ -1,4 +1,6 @@
-<?php  session_start(); ?>
+<?php 
+include("check_destroy_session.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,9 +57,7 @@
                         <tbody>
                             <!-- ---------------------------- -->
                             <?php
-
-
-                                include_once 'db.php';
+                            include_once 'db.php';
                                 $query = "SELECT * FROM  students ";
                                 $result = mysqli_query($conn, $query);
 

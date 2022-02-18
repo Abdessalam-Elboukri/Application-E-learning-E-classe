@@ -1,8 +1,6 @@
 <?php
 // including the database connection file
 include_once("db.php");
-
-$msg ="";
  
 if(isset($_POST['Update']))
 {       $id = $_POST['id'];
@@ -86,6 +84,7 @@ while($row = mysqli_fetch_array($result))
                     <form method="POST" action="edit.php" enctype="multipart/form-data" class="d-flex flex-column gap-3 mt-3">
                         
                         <input type="file" name="image" id="image" value="">
+                        
 
                         <div class="d-flex flex-column">
                             <label for="nom" class="fs-6 text-muted">Name</label>

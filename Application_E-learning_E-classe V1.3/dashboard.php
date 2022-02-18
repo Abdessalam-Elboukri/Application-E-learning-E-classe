@@ -1,27 +1,26 @@
-<?php include 'db.php';
-
-$students_sql = "SELECT COUNT(id) FROM students";
-$payments_sql = "SELECT SUM(amount_p) as total
-                FROM payments ";
-$course_sql = "SELECT COUNT(id) FROM courses";
-
-// students 
-$students = mysqli_query($conn, $students_sql);
-$std_num = mysqli_fetch_column($students);
-
-// payments
-$res = mysqli_query($conn, $payments_sql);
-$pay = mysqli_fetch_column($res);
 
 
+<?php 
+include("check_destroy_session.php");
 
-// courses
-$courses = mysqli_query($conn, $course_sql);
-$courses_num = mysqli_fetch_column($courses);
+    include 'db.php';
 
+    $students_sql = "SELECT COUNT(id) FROM students";
+    $payments_sql = "SELECT SUM(amount_p) as total
+                    FROM payments ";
+    $course_sql = "SELECT COUNT(id) FROM courses";
 
- session_start();
- 
+    // students 
+    $students = mysqli_query($conn, $students_sql);
+    $std_num = mysqli_fetch_column($students);
+
+    // payments
+    $res = mysqli_query($conn, $payments_sql);
+    $pay = mysqli_fetch_column($res);
+
+    // courses
+    $courses = mysqli_query($conn, $course_sql);
+    $courses_num = mysqli_fetch_column($courses);
 
 ?>
 

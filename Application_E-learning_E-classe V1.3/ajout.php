@@ -2,7 +2,8 @@
  
     require_once 'db.php';
     
-    
+    $msg="";
+    $error="";
     if( isset($_POST['submit'])) {
         // Get image name
         $image = $_FILES['image']['name'];
@@ -16,7 +17,7 @@
         // image file directory
   	    $target = "images/profiles/".basename($image);
 
-        // if( $name && $email && $phone && $enroll_n && $date_a){
+        if($image && $name && $email && $phone && $enroll_n && $date_a){
     
         $sql = " INSERT INTO students (`image`, `name`, `email`, `phone`, `enroll_n`, `date_a`) VALUES ('$image', '$name', '$email', '$phone', '$enroll_n', '$date_a')"; 
         mysqli_query($conn,$sql);
@@ -27,8 +28,11 @@
         }else{
             $msg = "Failed to upload image";
         }
-    }  
-
+    } else{
+        $error = "You should fill all fields";
+        header('location:ajout.php');
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -68,11 +72,12 @@
                     </div>
                     <form method="POST" action="ajout.php" enctype="multipart/form-data"  class="d-flex flex-column gap-2 mt-3">
                         <div class="d-flex flex-column">
-                            <input type="file" name="image" id="image" class="input-form" required >
+                            <input type="file" name="image" id="image" class="input-form"  >
+                            
                         </div>
                         <div class="d-flex flex-column">
                             <label for="" class="fs-6">Name</label>
-                            <input type="text" name="Nom" id="nom" class="input -form" required>
+                            <input type="text" name="Nom" id="nom" class="input -form" >
                         </div>
                         <div class="d-flex flex-column">
                             <label for="" class="fs-6">E-mail</label>
@@ -91,7 +96,7 @@
                             <input type="date" name="Date_A" id="Date_A" required>
                         </div>
                         <div class="mt-2"> 
-                            <input id="submit" type="submit" name="submit" value="Ajoute" class="px-4 pt-2 pb-2 border-0 text-white rounded-2" style="background:#79B4B7;"  > 
+                            <input id="submit" type="submit" name="submit" value="Ajoute" class="px-4 pt-2 pb-2 border-0 text-white rounded-2" style="background:#79B4B7;"  > <p class="d-inline"><?php echo $error ?></p>
                         </div>
                     </form>
                 </div>
