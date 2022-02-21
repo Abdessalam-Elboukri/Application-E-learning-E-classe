@@ -1,26 +1,28 @@
-
-
 <?php 
 include("check_destroy_session.php");
 
-    include 'db.php';
-
-    $students_sql = "SELECT COUNT(id) FROM students";
-    $payments_sql = "SELECT SUM(amount_p) as total
-                    FROM payments ";
-    $course_sql = "SELECT COUNT(id) FROM courses";
+    include "db.php";
 
     // students 
+    $students_sql = "SELECT COUNT(id) FROM students";
     $students = mysqli_query($conn, $students_sql);
-    $std_num = mysqli_fetch_column($students);
+    $std_num = mysqli_fetch_row($students);
+
 
     // payments
+    $payments_sql = "SELECT SUM(amount_p) as total FROM payments ";
     $res = mysqli_query($conn, $payments_sql);
-    $pay = mysqli_fetch_column($res);
+    $pay = mysqli_fetch_row($res);
 
     // courses
+    $course_sql = "SELECT COUNT(id) FROM courses";
     $courses = mysqli_query($conn, $course_sql);
-    $courses_num = mysqli_fetch_column($courses);
+    $courses_num = mysqli_fetch_row($courses);
+
+    // admins
+    $admin_sql = "SELECT COUNT(id) FROM accounts";
+    $admins = mysqli_query($conn, $admin_sql);
+    $admins_num = mysqli_fetch_row($admins);
 
 ?>
 
@@ -61,7 +63,7 @@ include("check_destroy_session.php");
                                 <p class="text-muted ">Students</p>
                                 <p class="fa-xs d-flex justify-content-end text-dark fw-bold fs-5">                                  
                                 <?php
-                                       echo $std_num;
+                                       echo $std_num[0];
                                        
                                     ?>
                                 </p>
@@ -76,7 +78,7 @@ include("check_destroy_session.php");
                                 <p class="text-muted">Course</p>
                                 <p class="d-flex justify-content-end text-dark fw-bold fs-5">
                                     <?php
-                                        echo $courses_num ;
+                                        echo $courses_num[0] ;
                                     ?>
                                 </p>
                             </div>
@@ -90,7 +92,7 @@ include("check_destroy_session.php");
                                 <p class="text-muted">Payments</p>
                                 <p class="fa-xs d-flex justify-content-end text-dark fw-bold fs-5">
                                 <?php
-                                       echo 'DHS ' .$pay;
+                                       echo 'DHS ' .$pay[0];
                                     ?>
                                 </p>
                             </div>
@@ -103,7 +105,9 @@ include("check_destroy_session.php");
                             <i class="bi bi-people-fill"></i>
                                 <p class="text-muted">Users</p>
                                 <p class="fa-xs d-flex justify-content-end text-dark fw-bold fs-5">
-                                    3
+                                    <?php
+                                        echo $admins_num[0];
+                                    ?>
                                 </p>
                             </div>
                         </div>

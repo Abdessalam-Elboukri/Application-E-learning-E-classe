@@ -14,7 +14,8 @@ include("check_destroy_session.php");
     <script src="bootstrap5/js/bootstrap.bundle.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style.css">
-    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -30,9 +31,9 @@ include("check_destroy_session.php");
                 <?php include 'navbar.php'; ?>
 
                 <!-- ============================= -->
-                <div class="row mt-5 flex-row p-1" style="background:#EEF2FF">
+                <div class="row mt-4 flex-row p-1">
                     <div class="col-10  d-flex flex-nowrap justify-content-between w-100">
-                        <h2 class=" style = font-size: 1.3rem">Students List</h2>
+                        <h2 class=" style = font-size: 1.3rem"  >Students List </h2>
                         <div style="font-size: 1rem;">
                         <i class="bi bi-caret-up-fill text-primary"></i>
                             <a href="ajout.php" class="btn btn-primary text-uppercase d-none d-sm-inline-block ">add new student</a>
@@ -41,8 +42,8 @@ include("check_destroy_session.php");
                     </div>
                     <hr class="m-auto" style="width: 100%;">
                 </div>
-                <div class="row mt-2 px-1 table-responsive" style="height: 73vh; background:#EEF2FF">
-                    <table class="table" style="border-collapse: separate; border-spacing: 0 10px;">
+                <div class="row mt-2 px-1 table-responsive" style="height: 75vh; background:#EEF2FF">
+                    <table class="table" style="border-collapse: separate; border-spacing: 0 9px;">
                         <thead>
                             <tr class=" text-muted ">
                                 <th scope="col"></th>
@@ -57,7 +58,7 @@ include("check_destroy_session.php");
                         <tbody>
                             <!-- ---------------------------- -->
                             <?php
-                            include_once 'db.php';
+                            include'db.php';
                                 $query = "SELECT * FROM  students ";
                                 $result = mysqli_query($conn, $query);
 
@@ -78,7 +79,7 @@ include("check_destroy_session.php");
                                         <td class="text-primary align-middle \">
                                             <div class="d-flex flex-nowrap gap-3\">
                                                 <a href="edit.php?id=<?php echo $row['id']; ?>"><i class="bi bi-pencil-square"></i></a>
-                                                <a href="delete.php?id=<?php echo $row['id']; ?>"><i class="bi bi-trash3 ms-3"></i></a>
+                                                <a href="delete.php?id=<?php echo $row['id']; ?>" class="delete"><i class="bi bi-trash3 ms-3"></i></a>
                                             </div>
                                         </td>
                                     </tr>
@@ -94,6 +95,32 @@ include("check_destroy_session.php");
             </div>
         </div>
     </section>
+    <script>
+    $('.delete').on('click',function (e) {
+        e.preventDefault();
+        var self = $(this);
+        console.log(self.data('title'));
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Deleted!',
+                    'Student has been deleted.',
+                    'success'
+                )
+              location.href = self.attr('href');
+            }
+        })
+
+    })
+</script>
 </body>
 
 </html>

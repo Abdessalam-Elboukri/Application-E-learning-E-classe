@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost" ;
-$username = "root" ;
-$password = "";
-$dataname = "eclassv1.2";
+$servername = "sql103.epizy.com" ;
+$username = "epiz_31105766" ;
+$password = "8bX2lE9CvSOjCUs";
+$dataname = "epiz_31105766_eclassv1_2";
 
 $conn =  new mysqli($servername, $username, $password, $dataname);
 

@@ -1,5 +1,5 @@
 
-   <aside class="d-flex flex-column justify-content-between col-2  bg-sidebar vh-100"  >
+   <aside class="d-flex flex-column justify-content-between col-2  bg-sidebar vh-100 "  >
         <div class="mt-1 w-100">
             <h2 class="h2 border-start ps-2 ecls ">E-class</h2>
         </div>
@@ -50,11 +50,12 @@
             </ul>
         </nav>
         <form action="">
-            <?php $null=""; ?>
-            <div class="mt-3 justify-content-center align-items-center  d-flex">
-                <input type="submit" name="logout" value="Logout" class=" nav-link text-dark d-none d-sm-inline bg-transparent border-0">
-                <i class="bi bi-box-arrow-right d-none d-sm-inline"></i>
-                <input type="submit" name="logout" class="d-sm-none fs-3 text-dark bg-transparent border-0  " value="<?php $null ?>" ><i class="bi bi-box-arrow-right d-sm-none"></i>
+            <?php $vide=""; ?>
+            <div class="mt-2 ps-sm-4 align-items-center  d-flex">
+                <input type="submit" name="logout" value="Logout" id="logout1" class=" nav-link text-dark d-none d-sm-inline bg-transparent border-0">
+                <label for="logout1"> <i class="bi bi-box-arrow-right d-none d-sm-inline cursor-pointer"></i></label>
+                <input type="submit" name="logout" id="logout2" class="d-sm-none fs-3 text-dark bg-transparent border-0  " value="<?php $vide ?>" >
+                <label for="logout2"><i class="bi bi-box-arrow-right d-sm-none"></i></label>
             </div>
         </form>
     </aside>

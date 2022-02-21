@@ -1,6 +1,6 @@
 <?php
 // including the database connection file
-include_once("db.php");
+include("db.php");
  
 if(isset($_POST['Update']))
 {       $id = $_POST['id'];

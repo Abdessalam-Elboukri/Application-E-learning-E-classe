@@ -68,7 +68,7 @@
                         <h3 >Ajouter un Course</h3>
                         <a href="courses.php" class="position-absolute fs-5 text-decoration-none text-white" style="right:10px; top:0px"><i class="bi bi-x-square-fill"></i></a>
                     </div>
-                    <form method="POST" action="add_course.php" enctype="multipart/form-data"  class="d-flex flex-column gap-2 mt-3">
+                    <form method="POST" action="add_course.php" enctype="multipart/form-data"  class="d-flex flex-column gap-2 mt-2">
                     
                         <div class="d-flex flex-column">
                             <input type="file" name="image" id="image" class="input-form" >
@@ -79,7 +79,7 @@
                         </div>
                         <div class="d-flex flex-column">
                             <label for="" class="fs-6">Description</label>
-                            <textarea name="info" id="info" cols="30" rows="4" style="resize: none; outline:none"></textarea>
+                            <textarea name="info" id="info" cols="30" rows="3" style="resize: none; outline:none"></textarea>
                         </div>
                         <div class="d-flex flex-column">
                             <label for="" class="fs-6">Lectures</label>
@@ -94,7 +94,7 @@
                             <input type="text" name="c_time" id="c_time">
                         </div>
                         <div class="mt-2"> 
-                            <input id="submit" type="submit" name="submit" value="Ajoute" class="px-4 pt-2 pb-2 border-0 text-white rounded-2"   > 
+                            <input id="submit" type="submit" name="submit" value="Ajoute" class="px-4 pt-2 pb-2 border-0 text-white rounded-2" style="background:#79B4B7;"    > 
                         </div>
                     </form>
                 </div>

@@ -1,6 +1,6 @@
 <?php 
  
-    require_once 'db.php';
+    include 'db.php';
     
     $msg="";
     $error="";
@@ -49,7 +49,7 @@
     <link rel="stylesheet" href="style.css">
     <style>
         input{
-            height: 35px;
+            height: 32px;
             outline: none;
             border: none;
             border-bottom: 1.8px solid gray;

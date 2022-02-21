@@ -31,16 +31,17 @@ include("check_destroy_session.php");
                 <?php include 'navbar.php'; ?>
 
                 <!-- ============================= -->
-                <div class="row mt-5 flex-row">
+                <div class="row mt-4 flex-row">
                     <div class="col-10  d-flex flex-nowrap justify-content-between w-100">
                         <h2 class=" style = font-size: 1.2rem">Courses List</h2>
                         <div style="font-size: 1rem;">
                             <i class="fa fa-sort text-primary" aria-hidden="true"></i>
-                            <a href="add_course.php" class="btn btn-primary text-uppercase ds-6">add new course</a>
+                            <a href="add_course.php" class="btn btn-primary text-uppercase d-none d-sm-inline-block ">add new course</a>
+                            <a href="add_course.php" class="btn btn-primary d-sm-none "><i class="bi bi-plus-square-fill"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="row mt-2 px-2 table-responsive" style="height: 73vh;">
+                <div class="row mt-2 px-2 table-responsive" style="height: 76vh;">
                     <table class="table">
                         <thead>
                             <tr class=" text-muted">
