@@ -95,26 +95,30 @@ session_start();
 
                 <?php include 'error_login.php'; ?>
 
-                <div class=" d-flex flex-column text-muted ">
+                <div class="input-control d-flex flex-column text-muted ">
                         <label for="">Full Name</label>
                         <input type="text" name="full-name" id="name-signup" value="" placeholder="Enter your Name"
                             class="w-100 rounded-3 border p-2 bg-transparent form-control">
+                            <div class="error"></div>
                     </div>
 
-                    <div class=" d-flex flex-column text-muted ">
+                    <div class="input-control d-flex flex-column text-muted ">
                         <label for="">E-mail</label>
                         <input type="email" name="email" id="email-signup" value="" placeholder="Enter your email"
                             class="w-100 rounded-3 border p-2 bg-transparent form-control">
+                            <div class="error"></div>
                     </div>
-                    <div class=" d-flex flex-column text-muted mt-3 text">
+                    <div class="input-control d-flex flex-column text-muted mt-3 text">
                         <label for="">Password</label>
                         <input type="password" name="password" id="pass-signup" value="" placeholder="Enter your password"
                             class="w-100 rounded-3 border p-2 bg-transparent form-control">
+                            <div class="error"></div>
                     </div>
-                    <div class=" d-flex flex-column text-muted mt-3 text">
+                    <div class="input-control d-flex flex-column text-muted mt-3 text">
                         <label for="">Comfirm Password</label>
                         <input type="password" name="comf-password" id="comfirmpass-signup" value="" placeholder="Comfirm your password"
                             class="w-100 rounded-3 border p-2 bg-transparent form-control">
+                            <div class="error"></div>
                     </div>
                     <div class="mt-3">
                         <input type="submit" value="Sign Up" name="signup_user" class="btn btn-info w-100 rounded-3 border-1 text-decoretion-none text-white text-uppercase" >
@@ -128,6 +132,7 @@ session_start();
         </div>
     </div>
 </section>
+<script src="js/signup_val.js"></script>
 </body>
 
 </html>
