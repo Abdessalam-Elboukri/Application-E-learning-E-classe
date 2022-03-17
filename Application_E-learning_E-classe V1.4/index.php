@@ -121,7 +121,7 @@
                         </div>
                         </form>
                         <div class="text-center mt-3">
-                            <p class="text-muted h6">Forgot your password?<a href="#" class="text-info ms-1">Reset Password</a></p>
+                            <p class="text-muted h6">I don't have an account<a href="signup.php" class="text-info ms-1">Sign Up</a></p>
                         </div>
                     </form>
                 </div>

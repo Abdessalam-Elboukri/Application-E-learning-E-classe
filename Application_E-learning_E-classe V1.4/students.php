@@ -5,6 +5,7 @@ include("check_destroy_session.php");
 <html lang="en">
 
 <head>
+    <link rel="shortcut icon" type="x-icon" href="images/logo.png">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,9 +25,7 @@ include("check_destroy_session.php");
 
             <!-- _____________________________ -->
             <?php include 'sidebar.php'; ?>
-
             <!-- _______________________________ -->
-
             <div class="col-10" >
                 <?php include 'navbar.php'; ?>
 
@@ -79,14 +78,14 @@ include("check_destroy_session.php");
                                         <td class="text-primary align-middle \">
                                             <div class="d-flex flex-nowrap gap-3\">
                                                 <a href="edit.php?id=<?php echo $row['id']; ?>"><i class="bi bi-pencil-square"></i></a>
-                                                <a href="delete.php?id=<?php echo $row['id']; ?>" class="delete"><i class="bi bi-trash3 ms-3"></i></a>
+                                                <a href="delete.php?id=<?php echo $row['id']; ?>" id="delete" onclick="confirm_del(event)"><i class="bi bi-trash3 ms-3"></i></a>
                                             </div>
                                         </td>
                                     </tr>
                             <?php
                                 }
                             } else {
-                                echo "No result found";
+                                echo "No result found"; 
                             }
                             ?>
                         </tbody>
@@ -96,30 +95,77 @@ include("check_destroy_session.php");
         </div>
     </section>
     <script>
-    $('.delete').on('click',function (e) {
+    function confirm_del(e){
         e.preventDefault();
-        var self = $(this);
-        console.log(self.data('title'));
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                Swal.fire(
-                    'Deleted!',
-                    'Student has been deleted.',
-                    'success'
+        // Swal.fire({
+        //     title: 'Are you sure?',
+        //     text: "You won't be able to revert this!",
+        //     icon: 'warning',
+        //     showCancelButton: true,
+        //     confirmButtonColor: '#3085d6',
+        //     cancelButtonColor: '#d33',
+        //     confirmButtonText: 'Yes, delete it!'
+        //     }).then((result) => {
+        //     if (result.isConfirmed) {
+        //         Swal.fire(
+        //         'Deleted!',
+        //         'Your file has been deleted.',
+        //         'success'
+        //         )
+        //     }
+        //     })
+        swal({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                confirmButtonClass: 'btn btn-success',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false
+            }).then(function () {
+                swal(
+                  'Deleted!',
+                  'Your file has been deleted.',
+                  'success'
                 )
-              location.href = self.attr('href');
-            }
-        })
+               //success method
+            }, function (dismiss) {
+                // dismiss can be 'cancel', 'overlay',
+                // 'close', and 'timer'
+                if (dismiss === 'cancel') {
+                    swal(
+                      'Cancelled',
+                      'Your imaginary file is safe :)',
+                      'error'
+                    )                
+                }
+            })     
+            // window.location.href='students.php';
+    }
+    //  document.getElementById('delete').addEventListener('click', function(){
+    //     Swal.fire({
+    //         title: 'Are you sure?',
+    //         text: "You won't be able to revert this!",
+    //         icon: 'warning',
+    //         showCancelButton: true,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#d33',
+    //         confirmButtonText: 'Yes, delete it!'
+    //         }).then((result) => {
+    //         if (result.isConfirmed) {
+    //             Swal.fire(
+    //             'Deleted!',
+    //             'Your file has been deleted.',
+    //             'success'
+    //             )
+    //         }
+    //         })
+    // })
 
-    })
 </script>
 </body>
 
